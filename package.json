@@ -1,0 +1,26 @@
+{
+  "name": "vue-computed-helpers",
+  "version": "1.0.0",
+  "description": "Computed helpers for Vue apps",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/michalsnik/vue-computed-helpers.git"
+  },
+  "keywords": [
+    "vue",
+    "vuejs",
+    "computed",
+    "helpers",
+    "plugin"
+  ],
+  "author": "Michał Sajnóg <msajnog93@gmail.com> (http://github.com/michalsnik)",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/michalsnik/vue-computed-helpers/issues"
+  },
+  "homepage": "https://github.com/michalsnik/vue-computed-helpers#readme"
+}
