@@ -16,16 +16,18 @@ yarn add vue-computed-helpers
 
 ## :rocket: Usage
 
-```
+```js
 import { eq, count, countBy } from 'vue-computed-helpers'
 
 export default {
   data() {
-    todos: [
-      { title: 'Clean house', done: false },
-      { title: 'Buy beer', done: true },
-      { title: 'Watch GoT', done: true }
-    ]
+    return {
+      todos: [
+        { title: 'Clean house', done: false },
+        { title: 'Buy beer', done: true },
+        { title: 'Watch GoT', done: true }
+      ]
+    }
   },
   computed: {
     todosCount: count('todos'), // 3
