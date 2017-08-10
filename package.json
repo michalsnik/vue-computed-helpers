@@ -1,6 +1,6 @@
 {
   "name": "vue-computed-helpers",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "Computed helpers for Vue apps",
   "main": "index.js",
   "scripts": {
