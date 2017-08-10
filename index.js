@@ -30,7 +30,7 @@ export function or(...args) {
 
 export function xor(arg1, arg2) {
   return function() {
-    return this[arg1] && !this[arg2] || !this[arg1] && this[arg2]
+    return (this[arg1] && !this[arg2]) || (this[arg2] && !this[arg1])
   }
 }
 
@@ -60,6 +60,19 @@ export function lte(arg1, arg2) {
 
 export function sum(...args) {
   return function() {
+    const firstArg = this[args[0]]
+
+    // First argument is an array
+    if (args.length === 1 && Array.isArray(firstArg)) {
+      return firstArg.reduce((acc, num) => acc + num, 0)
+    }
+
+    // One of passed arguments is not a number
+    if (args.some(arg => !Number.isFinite(arg) && !Number.isFinite(this[arg]))) {
+      console.assert(true, 'One of passed properties to "sum" helper is not a number')
+      return 0
+    }
+
     return args
       .reduce(
         (acc, arg) => acc + (this[arg] || arg),
@@ -90,7 +103,7 @@ export function max(arg) {
   return function() {
     const isArray = Array.isArray(this[arg])
     console.assert(isArray, 'computed helper "max" requires property of array type')
-    return isArray ? this[arg].sort((a, b) => a < b)[0] : this[arg]
+    return isArray ? this[arg].sort((a, b) => a < b)[0] : 0
   }
 }
 
@@ -98,7 +111,7 @@ export function min(arg) {
   return function() {
     const isArray = Array.isArray(this[arg])
     console.assert(isArray, 'computed helper "min" requires property of array type')
-    return isArray ? this[arg].sort((a, b) => a > b)[0] : this[arg]
+    return isArray ? this[arg].sort((a, b) => a > b)[0] : 0
   }
 }
 
@@ -106,8 +119,7 @@ export function filter(arg, fn) {
   return function() {
     const isArray = Array.isArray(this[arg])
     console.assert(isArray, 'computed helper "filter" requires property of array type')
-    if (!isArray) return this[arg]
-    return this[arg].filter(fn)
+    return isArray ? this[arg].filter(fn) : []
   }
 }
 
@@ -115,11 +127,11 @@ export function filterBy(arg, key, value) {
   return function() {
     const isArray = Array.isArray(this[arg])
     console.assert(isArray, 'computed helper "filterBy" requires property of array type')
-    if (!isArray) return this[arg]
+    if (!isArray) return []
     return this[arg]
-      .filter((item) =>
-        item[key] && item[key] === value
-      )
+      .filter((item) => {
+        return typeof item[key] !== undefined && item[key] === value
+      })
   }
 }
 
@@ -127,8 +139,7 @@ export function map(arg, fn) {
   return function() {
     const isArray = Array.isArray(this[arg])
     console.assert(isArray, 'computed helper "map" requires property of array type')
-    if (!isArray) return this[arg]
-    return this[arg].map(fn)
+    return isArray ? this[arg].map(fn) : []
   }
 }
 
@@ -136,8 +147,7 @@ export function mapBy(arg, key) {
   return function() {
     const isArray = Array.isArray(this[arg])
     console.assert(isArray, 'computed helper "map" requires property of array type')
-    if (!isArray) return this[arg]
-    return this[arg].map(item => item[key])
+    return isArray ? this[arg].map(item => item[key]) : []
   }
 }
 
