@@ -33,9 +33,9 @@ export default {
     }
   },
   computed: {
-    todosCount: count('todos'), // 3
-    notCompletedCount: countBy('todos', 'done', false), // 1
-    amIFucked: eq('notCompletedCount', 'todosCount') // false
+    allTodosCount: count('todos'), // 3
+    completedCount: countBy('todos', 'done', true), // 2
+    allCompleted: eq('completedCount', 'allTodosCount') // false
   }
 }
 ```
