@@ -1,5 +1,8 @@
 # vue-computed-helpers
 
+[![NPM version](https://img.shields.io/npm/v/vue-computed-helpers.svg?style=flat)](https://npmjs.org/package/vue-computed-helpers)
+[![Build Status](https://travis-ci.org/michalsnik/vue-computed-helpers.svg?branch=master)](https://travis-ci.org/michalsnik/vue-computed-helpers)
+
 > This package contains bunch of useful helpers that can be used to simplify computed properties
 
 ## :cd: Installation
