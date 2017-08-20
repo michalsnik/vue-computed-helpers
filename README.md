@@ -62,6 +62,8 @@ export default {
 | max | `max('arrayProperty')` | no |
 | filter | `filter('arrayProperty', (el) => el.done === true)` | no |
 | filterBy | `filterBy('arrayProperty', 'done', true)` | no |
+| find | `find('arrayProperty', (el) => el.id === 5)` | no |
+| findBy | `findBy('arrayProperty', 'id', 5)` | no |
 | map | `map('arrayProperty', (el) => el.id)` | no |
 | mapBy | `mapBy('arrayProperty', 'id')` | no |
 | count | `count('arrayProperty')` | no |

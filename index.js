@@ -135,6 +135,26 @@ export function filterBy(arg, key, value) {
   }
 }
 
+export function find(arg, fn) {
+  return function() {
+    const isArray = Array.isArray(this[arg])
+    console.assert(isArray, 'computed helper "find" requires property of array type')
+    return isArray ? this[arg].find(fn) : undefined
+  }
+}
+
+export function findBy(arg, key, value) {
+  return function() {
+    const isArray = Array.isArray(this[arg])
+    console.assert(isArray, 'computed helper "findBy" requires property of array type')
+    if (!isArray) return undefined
+    return this[arg]
+      .find((item) => {
+        return typeof item[key] !== undefined && item[key] === value
+      })
+  }
+}
+
 export function map(arg, fn) {
   return function() {
     const isArray = Array.isArray(this[arg])
