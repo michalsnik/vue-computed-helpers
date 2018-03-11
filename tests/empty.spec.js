@@ -1,4 +1,4 @@
-import * as computed from '../index'
+import * as computed from '../lib/index'
 
 test('empty', () => {
   const context = {}

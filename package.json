@@ -2,7 +2,7 @@
   "name": "vue-computed-helpers",
   "version": "1.2.0",
   "description": "Computed helpers for Vue apps",
-  "main": "index.js",
+  "main": "lib/index.js",
   "scripts": {
     "start": "npm run test:watch",
     "test": "jest",
