@@ -68,8 +68,42 @@ export default {
 | mapBy | `mapBy('arrayProperty', 'id')` | no |
 | count | `count('arrayProperty')` | no |
 | countBy | `countBy('arrayProperty', 'done', true)` | no |
+| classObject | `classObject('isPrimary', 'has-title:title', 'wide')` | yes |
 
 `x` means that it can be either value or property name. If you provide a string and there will be a property with that name it's value will be used to perform the check.
+
+## :mag: Detailed usage of some helpers
+
+### classObject
+
+Example code:
+```
+import { classObject } from 'vue-computed-helpers'
+
+export default {
+  props: ['isPrimary', 'title', 'wide']
+  computed: {
+    classObj: classObject('isPrimary', 'has-title:title', 'wide')
+  }
+}
+```
+
+Given all above props are set and truthy, this computed property will return the following object:
+```
+{
+  'is-primary': true,
+  'has-title': true,
+  'wide': true
+}
+```
+
+Which can be used in template:
+```
+<template>
+  <div :class="classObj">
+  </div>
+</template>
+```
 
 ## :lock: License
 
