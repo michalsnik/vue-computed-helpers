@@ -77,7 +77,7 @@ export default {
 ### classObject
 
 Example code:
-```
+```js
 import { classObject } from 'vue-computed-helpers'
 
 export default {
@@ -89,7 +89,7 @@ export default {
 ```
 
 Given all above props are set and truthy, this computed property will return the following object:
-```
+```js
 {
   'is-primary': true,
   'has-title': true,
@@ -98,7 +98,7 @@ Given all above props are set and truthy, this computed property will return the
 ```
 
 Which can be used in template:
-```
+```html
 <template>
   <div :class="classObj">
   </div>
